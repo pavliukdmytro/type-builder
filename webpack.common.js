@@ -2,7 +2,9 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const fs = require('fs');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+
 
 function getAllHbsRootFiles() {
   const files = fs.readdirSync('./src/views/').filter(file => file.match(/.hbs$/));
@@ -52,20 +54,14 @@ module.exports = {
           },
         ],
       },
-      /** typescript loader **/
-      {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
-      },
       /** babel **/
       {
-        test: /\.m?js$/,
-        exclude: /(node_modules|bower_components)/,
+        test: /\.ts$/,
+        exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env'],
+            presets: ['@babel/preset-env', '@babel/preset-typescript'],
             plugins: ['@babel/plugin-proposal-object-rest-spread']
           }
         }
@@ -83,18 +79,16 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.ts', '.js'],
   },
   plugins: [
+    new ForkTsCheckerWebpackPlugin(),
+    new ESLintPlugin({
+      extensions: ['ts']
+    }),
     /** выносим все стили с js в css файл **/
     new MiniCssExtractPlugin(),
     /** собераем html files **/
     ...getAllHbsRootFiles(),
-    // new CleanWebpackPlugin(),
   ],
-  // output: {
-  //   filename: '[name].bundle.js',
-  //   path: path.resolve(__dirname, 'dist'),
-  //   clean: true,
-  // },
 };
