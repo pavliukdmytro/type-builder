@@ -15,7 +15,10 @@
     "prettier"
   ],
   "root": true,
-  "ignorePatterns": ["webpack.*.js"],
+  "ignorePatterns": [
+    "webpack.*.js",
+    "dist"
+  ],
   "parserOptions": {
     "requireConfigFile": false
   },
