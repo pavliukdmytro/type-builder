@@ -1,8 +1,25 @@
-// import "./scss/main.scss";
-import "./scss/main.scss";
+import './scss/main.scss';
 
-const fn = (name: string): void => {
-  console.log(name);
-};
+require('./scss/main.scss');
 
-fn("Dima");
+const arr = [1, 3, 7];
+
+for (let i = 0; i < arr.length; i += 1) {
+  console.log(i);
+}
+
+class User {
+  private readonly test: string;
+
+  constructor(test: string) {
+    this.test = test;
+  }
+
+  sayHello(): void {
+    console.log(this.test);
+  }
+}
+
+const newUser = new User('Dima');
+
+newUser.sayHello();
