@@ -1,7 +1,7 @@
 import './scss/main.scss';
 
-const fn = (name: number) : void => {
+const fn = (name: string) : void => {
   console.log(name);
 };
 
-fn(13);
+fn('Dima');

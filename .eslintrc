@@ -1,4 +1,8 @@
 {
+  "env": {
+    "browser": true,
+    "node": true
+  },
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
@@ -7,11 +11,12 @@
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
   "root": true,
-  "rules": {
-    "no-console": "off"
-  },
   "ignorePatterns": ["webpack.*.js"],
   "parserOptions": {
     "requireConfigFile": false
+  },
+  "rules": {
+    "no-console": "off",
+    "no-alert": "off"
   }
 }
