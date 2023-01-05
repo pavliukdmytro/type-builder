@@ -1,7 +1,8 @@
-import './scss/main.scss';
+// import "./scss/main.scss";
+import "./scss/main.scss";
 
-const fn = (name: string) : void => {
+const fn = (name: string): void => {
   console.log(name);
 };
 
-fn('Dima');
+fn("Dima");
