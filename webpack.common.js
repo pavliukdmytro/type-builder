@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const { VueLoaderPlugin } = require('vue-loader');
 
 function getAllHbsRootFiles() {
   const files = fs.readdirSync('./src/views/').filter((file) => file.match(/.hbs$/));
@@ -61,7 +62,11 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-typescript'],
+            presets: [
+              '@babel/preset-env',
+              'babel-preset-typescript-vue3',
+              '@babel/preset-typescript',
+            ],
             plugins: ['@babel/plugin-proposal-object-rest-spread'],
           },
         },
@@ -74,12 +79,20 @@ module.exports = {
           partialDirs: [path.join(__dirname, 'src/views/partials')],
         },
       },
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: {
+          esModule: true,
+        },
+      },
     ],
   },
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.ts', '.js', '.vue'],
     alias: {
       '@': path.resolve(__dirname, './src/'),
+      vue: 'vue/dist/vue.esm-bundler.js',
     },
   },
   plugins: [
@@ -94,5 +107,6 @@ module.exports = {
     new CopyPlugin({
       patterns: [{ from: 'src/images', to: 'images' }],
     }),
+    new VueLoaderPlugin(),
   ],
 };

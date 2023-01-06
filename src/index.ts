@@ -1,25 +1,12 @@
 import './scss/main.scss';
 
-require('./scss/main.scss');
+import { createApp } from 'vue';
 
-const arr = [1, 3, 7];
+import VueTest from './test.vue';
 
-for (let i = 0; i < arr.length; i += 1) {
-  console.log(i);
-}
-
-class User {
-  private readonly test: string;
-
-  constructor(test: string) {
-    this.test = test;
-  }
-
-  sayHello(): void {
-    console.log(this.test);
-  }
-}
-
-const newUser = new User('Dima');
-
-newUser.sayHello();
+createApp({
+  components: {
+    'vue-test': VueTest,
+  },
+  template: '<vue-test />',
+}).mount('#app');
