@@ -6,6 +6,9 @@
     "target": "es5",
     "allowJs": true,
     "moduleResolution": "node",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"],
