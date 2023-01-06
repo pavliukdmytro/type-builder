@@ -57,7 +57,7 @@ module.exports = {
       },
       /** babel **/
       {
-        test: /\.ts$/,
+        test: /\.(ts|js)$/,
         exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
@@ -89,7 +89,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.ts', '.js', '.vue'],
+    extensions: ['.ts', '.js'],
     alias: {
       '@': path.resolve(__dirname, './src/'),
       vue: 'vue/dist/vue.esm-bundler.js',
