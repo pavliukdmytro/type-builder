@@ -89,7 +89,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.ts', '.js', '.vue'],
     alias: {
       '@': path.resolve(__dirname, './src/'),
       vue: 'vue/dist/vue.esm-bundler.js',
