@@ -39,9 +39,7 @@
       "ignorePackages",
       {
         "js": "never",
-        "mjs": "never",
-        "jsx": "never",
-        "ts": "never",
+        "ts": "ignorePackages",
         "vue": "ignorePackages"
       }
     ]
