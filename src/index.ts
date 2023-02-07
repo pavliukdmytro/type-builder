@@ -1,13 +1,15 @@
 import './vue-shim.d.ts';
-
 import './scss/main.scss';
-import { createApp } from 'vue';
 
-import App from './app/App.vue';
+import { IApp } from './libs/IApp';
+import App from './libs/App';
+import './root-components';
 
-createApp({
-  components: {
-    'vue-test': App,
-  },
-  template: '<vue-test />',
-}).mount('#app');
+declare global {
+  interface Window {
+    App: IApp;
+  }
+}
+
+window.App = App;
+App.vue.main();

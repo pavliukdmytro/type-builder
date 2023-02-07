@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, Ref, defineProps } from 'vue';
+import { ref, Ref } from 'vue';
 
 import AppInput from './AppInput.vue';
 
@@ -22,7 +22,6 @@ interface InputItems {
   text: string;
 }
 
-const props = defineProps(['result']);
 const inputValue = ref('');
 const inputItems: Ref = ref([]);
 

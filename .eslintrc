@@ -42,7 +42,9 @@
         "ts": "ignorePackages",
         "vue": "ignorePackages"
       }
-    ]
+    ],
+    "@typescript-eslint/no-var-requires": "off",
+    "global-require": "off"
   },
   "settings": {
     "import/resolver": {
@@ -55,6 +57,14 @@
         "moduleDirectory": [
           "node_modules"
         ]
+      },
+      "alias": {
+        "map": [
+          // I have my actions folder in ./shared/actions
+          ["@", "./src/"],
+          ["@components", "./src/app/components/"]
+        ],
+        "extensions": [".ts", ".js", ".vue"]
       }
     }
   }

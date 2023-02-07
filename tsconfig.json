@@ -8,7 +8,8 @@
     "allowJs": true,
     "moduleResolution": "node",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@components": ["./src/app/components/"]
     },
     "sourceMap": true,
     "strict": true,
