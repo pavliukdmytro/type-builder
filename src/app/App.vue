@@ -7,22 +7,28 @@
     <div class="app-items">
       <AppItem v-for="item in inputItems" :key="item.id" :result="item" @remove="handlerRemove" />
     </div>
+    <button @click="handlerClick">Open modal</button>
+    <br />
+    screen width: {{ screenWidth }}
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref, Ref, defineProps } from 'vue';
+import { ref, Ref } from 'vue';
 
+import useModal from '@/app/use/useModal';
+import useScreenWidth from '@/app/use/useScreenWidth';
 import AppInput from './AppInput.vue';
 
 import AppItem from './AppItem';
+
+const screenWidth = useScreenWidth();
 
 interface InputItems {
   id: number;
   text: string;
 }
 
-const props = defineProps(['result']);
 const inputValue = ref('');
 const inputItems: Ref = ref([]);
 
@@ -39,6 +45,20 @@ const handlerSave = (): void => {
 
 const handlerRemove = (id: number): void => {
   inputItems.value = inputItems.value.filter((el: InputItems): boolean => el.id !== id);
+};
+
+const handlerClick = () => {
+  const modal = useModal();
+
+  modal.show({
+    name: 'TestModal',
+    width: '320px',
+    props: {
+      result: 'Dimooon!',
+    },
+  });
+  // console.log('click!!');
+  // console.log($DefModal.star);
 };
 </script>
 

@@ -1,6 +1,5 @@
 export default (store) => {
   store.subscribe(({ type, payload }, state) => {
-    console.log(state);
     // eslint-disable-next-line default-case
     switch (type) {
       case 'global/loaderStart':
