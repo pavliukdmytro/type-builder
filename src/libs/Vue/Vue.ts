@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import { IVue, IComponents, IComponent } from './IVue';
 
-import store from '../../store';
+import { store, storeKey } from '../../store';
 
 interface IParams {
   [name: string]: number | string | IParams | boolean;
@@ -25,7 +25,6 @@ class Vue implements IVue {
   createPropsFromAttributes(data: HTMLDivElement): IParams {
     try {
       const { dataset } = data;
-      console.dir(dataset);
 
       const params: IParams = {};
       // eslint-disable-next-line no-restricted-syntax
@@ -54,7 +53,7 @@ class Vue implements IVue {
         const name = el.dataset.vue;
         if (name && name in this.components) {
           const app = createApp(this.components[name], this.createPropsFromAttributes(el));
-          app.use(store);
+          app.use(store, storeKey);
 
           app.use(require('vue-universal-modal').default, {
             teleportTarget: '#modals',

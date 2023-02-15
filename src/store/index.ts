@@ -1,13 +1,19 @@
-import { createStore } from 'vuex';
+import { InjectionKey } from 'vue';
+import { createStore, useStore as baseUseStore, Store } from 'vuex';
+
+import { IState } from '@/store/IState';
 import loader from './plugins/loader';
 
 const debug = process.env.NODE_ENV !== 'production';
 
+// eslint-disable-next-line symbol-description
+export const storeKey: InjectionKey<Store<IState>> = Symbol();
+
 // Create a new index instance.
-const store = createStore({
+export const store = createStore<IState>({
   state() {
     return {
-      counter: 0,
+      // counter: 0,
     };
   },
   modules: {
@@ -18,4 +24,6 @@ const store = createStore({
   strict: debug,
 });
 
-export default store;
+export function useStore() {
+  return baseUseStore(storeKey);
+}

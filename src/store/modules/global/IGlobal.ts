@@ -12,7 +12,7 @@ export interface IModal {
   isOpen: boolean;
   data?: IModalData;
 }
-export interface IState {
+export interface IGlobal {
   screenWidth: number;
   loader: boolean;
   defModal: IModal;
