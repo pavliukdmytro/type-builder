@@ -10,14 +10,17 @@
     <button @click="handlerClick">Open modal</button>
     <br />
     screen width: {{ screenWidth }}
+    <button @click="handlerOpenSwipeModal">open swipe modal</button>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref, Ref } from 'vue';
+import TestSwipeModal from '@/app/components/Modals/TestSwipeModal.vue';
 
-import useModal from '@/app/use/useModal';
-import useScreenWidth from '@/app/use/useScreenWidth';
+import useModal from '@/use/useModal';
+import useScreenWidth from '@/use/useScreenWidth';
+import useModalSwipe from '@/use/useModalSwipe/useModalSwipe';
 import AppInput from './AppInput.vue';
 
 import AppItem from './AppItem';
@@ -46,10 +49,8 @@ const handlerSave = (): void => {
 const handlerRemove = (id: number): void => {
   inputItems.value = inputItems.value.filter((el: InputItems): boolean => el.id !== id);
 };
-
+const modal = useModal();
 const handlerClick = () => {
-  const modal = useModal();
-
   modal.show({
     name: 'TestModal',
     width: '320px',
@@ -57,8 +58,17 @@ const handlerClick = () => {
       result: 'Dimooon!',
     },
   });
-  // console.log('click!!');
-  // console.log($DefModal.star);
+};
+const modalSwipe = useModalSwipe();
+
+const handlerOpenSwipeModal = () => {
+  modalSwipe.show(
+    TestSwipeModal,
+    {},
+    {
+      width: '280px',
+    }
+  );
 };
 </script>
 

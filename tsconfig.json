@@ -16,11 +16,12 @@
     "importHelpers": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "jsx": "preserve"
   },
-//  "include": ["src"],
   "include": [
     "./src/**/*.ts",
+    "./src/**/*.tsx",
     "./src/**/*/*.vue",
   ],
   "exclude": ["node_modules", "dist"],
