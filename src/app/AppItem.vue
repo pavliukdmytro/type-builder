@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps, reactive } from 'vue';
+import { reactive } from 'vue';
 
 interface Props {
   result: {

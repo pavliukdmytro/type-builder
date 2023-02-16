@@ -3,8 +3,8 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps } from 'vue';
-
-const props = defineProps(['result']);
+const props = defineProps({
+  result: Object,
+});
 console.log(props);
 </script>
