@@ -10,6 +10,7 @@
     <button @click="handlerClick">Open modal</button>
     <br />
     screen width: {{ screenWidth }}
+    <br />
     <button @click="handlerOpenSwipeModal">open swipe modal</button>
   </div>
 </template>
@@ -18,7 +19,8 @@
 import { ref, Ref } from 'vue';
 import TestSwipeModal from '@/app/components/Modals/TestSwipeModal.vue';
 
-import useModal from '@/use/useModal';
+import useModal from '@/use/useModal/useModal';
+
 import useScreenWidth from '@/use/useScreenWidth';
 import useModalSwipe from '@/use/useModalSwipe/useModalSwipe';
 import AppInput from './AppInput.vue';
@@ -51,13 +53,7 @@ const handlerRemove = (id: number): void => {
 };
 const modal = useModal();
 const handlerClick = () => {
-  modal.show({
-    name: 'TestModal',
-    width: '320px',
-    props: {
-      result: 'Dimooon!',
-    },
-  });
+  modal.show(TestSwipeModal);
 };
 const modalSwipe = useModalSwipe();
 

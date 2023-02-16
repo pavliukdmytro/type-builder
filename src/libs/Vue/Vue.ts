@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
+// import VueUniversalModal from 'vue-universal-modal';
+import { store, storeKey } from '@/store';
 import { IVue, IComponents, IComponent } from './IVue';
-
-import { store, storeKey } from '../../store';
 
 interface IParams {
   [name: string]: number | string | IParams | boolean;
@@ -55,9 +55,9 @@ class Vue implements IVue {
           const app = createApp(this.components[name], this.createPropsFromAttributes(el));
           app.use(store, storeKey);
 
-          app.use(require('vue-universal-modal').default, {
-            teleportTarget: '#modals',
-          });
+          // app.use(VueUniversalModal, {
+          //   teleportTarget: '#modals',
+          // });
 
           app.mount(el);
         }
