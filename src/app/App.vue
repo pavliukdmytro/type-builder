@@ -12,6 +12,9 @@
     screen width: {{ screenWidth }}
     <br />
     <button @click="handlerOpenSwipeModal">open swipe modal</button>
+    <br />
+    <br />
+    <button @click="loaderStart">loader start</button>
   </div>
 </template>
 
@@ -23,6 +26,7 @@ import useModal from '@/use/useModal/useModal';
 
 import useScreenWidth from '@/use/useScreenWidth';
 import useModalSwipe from '@/use/useModalSwipe/useModalSwipe';
+import useLoader from '@/use/useLoader/useLoader';
 import AppInput from './AppInput.vue';
 
 import AppItem from './AppItem';
@@ -65,6 +69,14 @@ const handlerOpenSwipeModal = () => {
       width: '280px',
     }
   );
+};
+const loader = useLoader();
+
+const loaderStart = () => {
+  loader.start();
+  setTimeout(() => {
+    loader.stop();
+  }, 2000);
 };
 </script>
 

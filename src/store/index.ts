@@ -2,7 +2,6 @@ import { InjectionKey } from 'vue';
 import { createStore, useStore as baseUseStore, Store } from 'vuex';
 
 import { IState } from '@/store/IState';
-import loader from './plugins/loader';
 
 const debug = process.env.NODE_ENV !== 'production';
 
@@ -20,7 +19,6 @@ export const store = createStore<IState>({
     global: require('./modules/global/global').default,
   },
   mutations: {},
-  plugins: [loader],
   strict: debug,
 });
 
