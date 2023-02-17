@@ -66,9 +66,10 @@
       },
       "alias": {
         "map": [
-          // I have my actions folder in ./shared/actions
           ["@", "./src/"],
-          ["@components", "./src/app/components/"]
+          ["@components", "./src/app/components/"],
+          ["@use", "./src/use/"],
+          ["@def", "./src/app/components/Def/"]
         ],
         "extensions": [".ts",".tsx", ".js", ".vue"]
       }

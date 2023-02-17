@@ -29,9 +29,6 @@ const props = defineProps({
 </script>
 
 <style lang="scss" scoped>
-:root {
-  --animation-spead: 0.5s;
-}
 .modal-fade {
   position: fixed;
   top: 0;

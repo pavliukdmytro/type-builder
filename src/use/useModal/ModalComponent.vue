@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts" setup>
-import useModal from '@/use/useModal/useModal';
+import useModal from '@use/useModal/useModal';
 
 const modal = useModal();
 

@@ -20,9 +20,9 @@
 
 <script lang="ts" setup>
 import { ref, Ref } from 'vue';
-import TestSwipeModal from '@/app/components/Modals/TestSwipeModal.vue';
+import TestSwipeModal from '@components/Modals/TestSwipeModal.vue';
 
-import useModal from '@/use/useModal/useModal';
+import useModal from '@use/useModal/useModal';
 
 import useScreenWidth from '@/use/useScreenWidth';
 import useModalSwipe from '@/use/useModalSwipe/useModalSwipe';

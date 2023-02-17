@@ -7,7 +7,7 @@
 
 <script lang="ts" setup>
 import useScreenWidth from '@/use/useScreenWidth';
-import useModal from '@/use/useModal/useModal';
+import useModal from '@use/useModal/useModal';
 
 const screenWidth = useScreenWidth();
 

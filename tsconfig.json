@@ -9,7 +9,9 @@
     "moduleResolution": "node",
     "paths": {
       "@/*": ["./src/*"],
-      "@components": ["./src/app/components/"]
+      "@components/*": ["./src/app/components/*"],
+      "@use/*": ["./src/use/*"],
+      "@def/*": ["./src/app/components/Def/*"]
     },
     "sourceMap": true,
     "strict": true,
