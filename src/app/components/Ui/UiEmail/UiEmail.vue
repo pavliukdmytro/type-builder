@@ -1,11 +1,12 @@
 <template>
-  <span class="def-input">
+  <span class="ui-email">
     <input
       ref="input"
+      type="email"
       v-bind="props"
       :value="savedValue"
-      :class="{ 'def-input__fill_error': !isValid }"
-      class="def-input__fill"
+      :class="{ 'ui-email__fill_error': !isValid }"
+      class="ui-email__fill"
       @input="handlerInput"
     />
   </span>
@@ -16,13 +17,12 @@ import { ref, Ref, watch } from 'vue';
 import useValidate from '@use/useValidate/useValidate';
 
 interface IProps {
-  type?: string;
   required?: boolean;
   pattern?: string;
   value?: string;
 }
 const props = withDefaults(defineProps<IProps>(), {
-  type: 'text',
+  pattern: '^([a-z0-9_-]+\\.?)+[a-z0-9_-]+@[a-z0-9_-]+(\\.[a-z0-9_-]+)*\\.[a-z]{2,6}$',
 });
 
 const savedValue = ref(props.value);
@@ -39,10 +39,12 @@ const isValid: Ref<boolean> = useValidate(input);
 watch(props, (newProps) => {
   savedValue.value = newProps.value;
 });
+/** doc https://beholdr.github.io/maska/#/ * */
+// import { vMaska } from 'maska';
 </script>
 
 <style lang="scss" scoped>
-.def-input {
+.ui-email {
   &__fill {
     height: 40px;
     padding: 15px;

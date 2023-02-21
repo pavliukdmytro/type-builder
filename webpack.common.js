@@ -98,7 +98,7 @@ module.exports = {
       '@': path.resolve(__dirname, './src/'),
       '@components': path.resolve(__dirname, './src/app/components/'),
       '@use': path.resolve(__dirname, './src/use/'),
-      '@def': path.resolve(__dirname, './src/app/components/Def/'),
+      '@ui': path.resolve(__dirname, './src/app/components/Ui/'),
       vue: 'vue/dist/vue.esm-bundler.js',
     },
   },

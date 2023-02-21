@@ -11,7 +11,7 @@
       "@/*": ["./src/*"],
       "@components/*": ["./src/app/components/*"],
       "@use/*": ["./src/use/*"],
-      "@def/*": ["./src/app/components/Def/*"]
+      "@ui/*": ["./src/app/components/Ui/*"]
     },
     "sourceMap": true,
     "strict": true,

@@ -69,7 +69,7 @@
           ["@", "./src/"],
           ["@components", "./src/app/components/"],
           ["@use", "./src/use/"],
-          ["@def", "./src/app/components/Def/"]
+          ["@ui", "./src/app/components/Ui/"]
         ],
         "extensions": [".ts",".tsx", ".js", ".vue"]
       }
