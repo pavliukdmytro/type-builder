@@ -20,6 +20,7 @@ interface IProps {
   required?: boolean;
   pattern?: string;
   value?: string;
+  placeholder?: string;
 }
 const props = withDefaults(defineProps<IProps>(), {
   pattern: '^([a-z0-9_-]+\\.?)+[a-z0-9_-]+@[a-z0-9_-]+(\\.[a-z0-9_-]+)*\\.[a-z]{2,6}$',
@@ -39,8 +40,6 @@ const isValid: Ref<boolean> = useValidate(input);
 watch(props, (newProps) => {
   savedValue.value = newProps.value;
 });
-/** doc https://beholdr.github.io/maska/#/ * */
-// import { vMaska } from 'maska';
 </script>
 
 <style lang="scss" scoped>

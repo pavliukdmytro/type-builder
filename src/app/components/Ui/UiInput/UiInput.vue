@@ -20,6 +20,7 @@ interface IProps {
   required?: boolean;
   pattern?: string;
   value?: string;
+  placeholder?: string;
 }
 const props = withDefaults(defineProps<IProps>(), {
   type: 'text',

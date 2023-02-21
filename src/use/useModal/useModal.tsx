@@ -13,15 +13,24 @@ interface IProps {
   [name: string]: any;
 }
 
+interface IOptions {
+  width: string;
+}
+let callBack: (() => void) | undefined;
 export default function useModal() {
-  const show = (AppComponent: DefineComponent, props?: IProps) => {
+  const show = (AppComponent: DefineComponent, props?: IProps, options?: IOptions) => {
     isOpen.value = true;
     app = createApp(
-      <ModalComponent afterLeave={app?.unmount()}>
+      <ModalComponent>
         <AppComponent {...props} />
       </ModalComponent>,
       {
         isOpen,
+        options,
+        afterLeave: () => {
+          app?.unmount();
+          callBack?.();
+        },
       }
     );
     app.use(VueUniversalModal, {
@@ -31,8 +40,11 @@ export default function useModal() {
     app.mount('.modal-component');
   };
 
-  const hide = () => {
+  const hide = (): Promise<void> => {
     isOpen.value = false;
+    return new Promise((resolve) => {
+      callBack = resolve;
+    });
   };
 
   return {
