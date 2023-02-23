@@ -29,7 +29,7 @@ const componentName = computed(() => (props?.href ? 'a' : 'button'));
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--dark-grey);
+  background-color: #333;
   color: #fff;
   height: 44px;
   padding: 0 15px;

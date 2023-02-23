@@ -15,28 +15,21 @@
     <br />
     <br />
     <button @click="loaderStart">loader start</button>
-    <form action="">
-      <UiInput required />
-      <UiEmail required />
-      <button type="submit">submit</button>
-    </form>
+    <TestForm />
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref, Ref } from 'vue';
-import TestSwipeModal from '@components/Modals/TestSwipeModal.vue';
 
 import useModal from '@use/useModal/useModal';
-
 import useScreenWidth from '@/use/useScreenWidth';
 import useModalSwipe from '@/use/useModalSwipe/useModalSwipe';
 import useLoader from '@/use/useLoader/useLoader';
-import UiEmail from '@components/Ui/UiEmail/UiEmail.vue';
+import TestSwipeModal from '@components/Modals/TestSwipeModal.vue';
+import TestForm from '@/app/TestForm.vue';
 
-import UiInput from '@ui/UiInput/UiInput.vue';
 import AppInput from './AppInput.vue';
-
 import AppItem from './AppItem';
 
 const screenWidth = useScreenWidth();
