@@ -1,8 +1,9 @@
-import './vue-shim.d.ts';
+// import './vue-shim.d.ts';
 import './scss/main.scss';
 
 import { IApp } from './libs/IApp';
 import App from './libs/App';
+
 import './root-components';
 
 declare global {

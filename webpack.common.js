@@ -15,6 +15,7 @@ function getAllHbsRootFiles() {
     return new HtmlWebpackPlugin({
       template: `./src/views/${file}`,
       filename: `./${file.replace('.hbs', '.html')}`,
+      // hash: true,
       // templateParameters: require('./src/data/index.json'),
       minify: false,
       inject: false,
@@ -25,10 +26,13 @@ function getAllHbsRootFiles() {
 module.exports = {
   entry: {
     /** точка входа **/
-    app: './src/index.ts',
+    app: {
+      import: './src/app.js',
+    },
   },
   output: {
     /** вывод **/
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
   },
@@ -68,10 +72,7 @@ module.exports = {
               'babel-preset-typescript-vue3',
               '@babel/preset-typescript',
             ],
-            plugins: [
-              '@vue/babel-plugin-jsx',
-              '@babel/plugin-proposal-object-rest-spread',
-            ],
+            plugins: ['@vue/babel-plugin-jsx', '@babel/plugin-proposal-object-rest-spread'],
           },
         },
       },
@@ -99,7 +100,8 @@ module.exports = {
       '@components': path.resolve(__dirname, './src/app/components/'),
       '@use': path.resolve(__dirname, './src/use/'),
       '@ui': path.resolve(__dirname, './src/app/components/Ui/'),
-      vue: 'vue/dist/vue.esm-bundler.js',
+      '@store': path.resolve(__dirname, './src/store/'),
+      // vue: 'vue/dist/vue.esm-bundler.js',
     },
   },
   plugins: [
@@ -115,6 +117,16 @@ module.exports = {
       patterns: [{ from: 'src/images', to: 'images' }],
     }),
     new VueLoaderPlugin(),
-    new webpack.DefinePlugin(({ __VUE_OPTIONS_API__: true, __VUE_PROD_DEVTOOLS__: false }))
+    new webpack.DefinePlugin({ __VUE_OPTIONS_API__: true, __VUE_PROD_DEVTOOLS__: false }),
   ],
+  optimization: {
+    runtimeChunk: 'single',
+    chunkIds: 'named',
+    splitChunks: {
+      name: 'vendors',
+      chunks: (chunk) => {
+        return chunk.name === 'app';
+      },
+    },
+  },
 };

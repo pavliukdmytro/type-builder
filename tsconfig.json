@@ -11,7 +11,8 @@
       "@/*": ["./src/*"],
       "@components/*": ["./src/app/components/*"],
       "@use/*": ["./src/use/*"],
-      "@ui/*": ["./src/app/components/Ui/*"]
+      "@ui/*": ["./src/app/components/Ui/*"],
+      "@store/*": ["./src/store/*"]
     },
     "sourceMap": true,
     "strict": true,
@@ -23,6 +24,7 @@
   },
   "include": [
     "./src/**/*.ts",
+    "./src/**/*.d.ts",
     "./src/**/*.tsx",
     "./src/**/*/*.vue",
   ],
