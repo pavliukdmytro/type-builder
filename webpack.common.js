@@ -27,7 +27,7 @@ module.exports = {
   entry: {
     /** точка входа **/
     app: {
-      import: './src/app.js',
+      import: './src/index.ts',
     },
   },
   output: {
