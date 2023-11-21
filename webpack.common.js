@@ -35,6 +35,7 @@ module.exports = {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
+    chunkFilename: '[id]-[hash].js',
   },
   module: {
     rules: [
@@ -110,7 +111,9 @@ module.exports = {
       extensions: ['ts'],
     }),
     /** выносим все стили с js в css файл **/
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      chunkFilename: '[id]-[hash].css',
+    }),
     /** собераем html files **/
     ...getAllHbsRootFiles(),
     new CopyPlugin({
